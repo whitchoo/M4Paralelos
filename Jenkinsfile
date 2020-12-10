@@ -8,12 +8,12 @@ stage ('1stCalc')
     //echo 'reiniciamos richweb y limpiamos caches... '
     //build job:'(MX_CL) Rich AUXILIAR - 40005', wait:true
     
-    
-	build job:'(PARALELOS) taskCalcExecution', wait:true
+     
+	build job:'taskCalcExecution', wait:true
 	echo 'Cálculo ejecutado correctamente....'
 	echo 'mejoras pendientes: sacar alguna info del resultado de la ejecución '
 	
-	build job: '(PARALELOS) StopLight',propagate:false,wait:true,parameters: 
+	build job: 'Stoplight',propagate:false,wait:true,parameters: 
 	[string(name: 'PATH', value: 'C:\\xmlPnet\\temp'),
 	string(name: 'FILE', value: 'StepDone.0001')];
 
@@ -28,11 +28,11 @@ stage ('1stCalc')
 //    Stage de instalación de mdbs en entorno 'packInstallation'
 //**************************************************************//
 		stage('packInstallation'){
-			build job:'(PARALELOS) packsInstallation', wait:true			
+			build job:'packsInstallation', wait:true			
 			echo 'Se han instalados todos los paquetes'
 			echo 'mejoras pendientes: colocar log de paquetes instalados y alguna cosa mas.... '
 	
-        	build job: '(PARALELOS) StopLight',propagate:false,wait:true,parameters: 
+        	build job: 'Stoplight',propagate:false,wait:true,parameters: 
         	[string(name: 'PATH', value: 'C:\\xmlPnet\\temp'),
         	string(name: 'FILE', value: 'StepDone.0002')];			
             
@@ -50,11 +50,11 @@ stage ('1stCalc')
             //*******************************************************//
 			//	Ejecutamos segundo cálculo.
 			//*******************************************************//				
-                build job:'(PARALELOS) taskCalcExecution', wait:true
+                build job:'taskCalcExecution', wait:true
                 echo 'Cálculo ejecutado correctamente....'
                 echo 'mejoras pendientes: sacar alguna info del resultado de la ejecucion '
                 	
-            	build job: '(PARALELOS) StopLight',propagate:false,wait:true,parameters: 
+            	build job: 'Stoplight',propagate:false,wait:true,parameters: 
             	[string(name: 'PATH', value: 'C:\\xmlPnet\\temp'),
             	string(name: 'FILE', value: 'StepDone.0001')];	
                 
