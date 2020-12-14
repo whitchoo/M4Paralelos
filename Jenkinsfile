@@ -68,14 +68,25 @@ stage ('1stCalc')
 //**************************************************************//				
 			    stage('2ndExtract'){	
 					echo '2ndExtract'
+
+					build job:'1stExtract', wait:true
 					
-					
+					build job: 'Stoplight',propagate:false,wait:true,parameters: 
+					[string(name: 'PATH', value: 'C:\\xmlPnet\\temp'),
+					string(name: 'FILE', value: 'StepDone.0004')];
+		
 //**************************************************************//
 //    Stage de ejecutar comparación 'exeComparison'
 //**************************************************************//		
 					stage('exeComparison'){
 						echo 'exeComparison'
+
+						build job:'Analisis', wait:true
 						
+						build job: 'Stoplight',propagate:false,wait:true,parameters: 
+						[string(name: 'PATH', value: 'C:\\xmlPnet\\temp'),
+						string(name: 'FILE', value: 'StepDone.0005')];
+									
 //**************************************************************//
 //    Stage de publicación de resultados 'publishResults'
 //**************************************************************//								
