@@ -25,8 +25,6 @@ stage ('1stCalc')
 		
 		build job:'1stExtract', wait:true
 		
-			
-		
 		build job: 'Stoplight',propagate:false,wait:true,parameters: 
 		[string(name: 'PATH', value: 'C:\\xmlPnet\\temp'),
 		string(name: 'FILE', value: 'StepDone.0003')];
@@ -34,8 +32,8 @@ stage ('1stCalc')
 //**************************************************************//
 //    Stage de instalación de mdbs en entorno 'packInstallation'
 //**************************************************************//
-		stage('packInstallation'){
-			build job:'PacksInstallation', wait:true			
+		stage('PackInstalation'){
+			build job:'PackInstalation', wait:true			
 			echo 'Se han instalados todos los paquetes'
 			echo 'mejoras pendientes: colocar log de paquetes instalados y alguna cosa mas.... '
 	
