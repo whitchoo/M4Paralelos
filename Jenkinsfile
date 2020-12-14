@@ -93,7 +93,7 @@ stage ('1stCalc')
 						stage('publishResults'){
 								echo 'publishResults'
 								
-								archiveArtifacts artifacts: 'C:\\xmlPnet\\ComparadorRamdl\\TEMP', followSymlinks: false
+								build job:'PublishResults', wait:true
 								
 						}
 					
