@@ -69,7 +69,7 @@ stage ('1stCalc')
 			    stage('2ndExtract'){	
 					echo '2ndExtract'
 
-					build job:'1stExtract', wait:true
+					build job:'2ndExtract', wait:true
 					
 					build job: 'Stoplight',propagate:false,wait:true,parameters: 
 					[string(name: 'PATH', value: 'C:\\xmlPnet\\temp'),
