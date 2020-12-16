@@ -13,9 +13,10 @@ stage ('1stCalc')
 	echo 'Cálculo ejecutado correctamente....'
 	echo 'mejoras pendientes: sacar alguna info del resultado de la ejecución '
 	
-	build job: 'Stoplight',propagate:false,wait:true,parameters: 
-	[string(name: 'PATH', value: 'C:\\xmlPnet\\temp'),
-	string(name: 'FILE', value: 'StepDone.0001')];
+	//El siguiente semaforo ya no es necesario porque lo he llevado dentro del taskCalcExecution
+	//build job: 'Stoplight',propagate:false,wait:true,parameters: 
+	//[string(name: 'PATH', value: 'C:\\xmlPnet\\temp'),
+	//string(name: 'FILE', value: 'StepDone.0001')];
 
 //**************************************************************//
 //    Stage de primera extracción de datos '1stExtract'
@@ -59,9 +60,10 @@ stage ('1stCalc')
                 echo 'Cálculo ejecutado correctamente....'
                 echo 'mejoras pendientes: sacar alguna info del resultado de la ejecucion '
                 	
-            	build job: 'Stoplight',propagate:false,wait:true,parameters: 
-            	[string(name: 'PATH', value: 'C:\\xmlPnet\\temp'),
-            	string(name: 'FILE', value: 'StepDone.0001')];	
+				//El siguiente semaforo ya no es necesario porque lo he llevado dentro del taskCalcExecution
+				//build job: 'Stoplight',propagate:false,wait:true,parameters: 
+				//[string(name: 'PATH', value: 'C:\\xmlPnet\\temp'),
+				//string(name: 'FILE', value: 'StepDone.0001')];
                 
 //**************************************************************//
 //    Stage de segunda extracción de datos '2ndExtract'
