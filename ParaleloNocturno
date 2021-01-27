@@ -1,0 +1,47 @@
+//**************************************************************//
+//    Inicio de pipeline
+//**************************************************************//
+//    Stage de primer cálculo 'PayrollCalc'
+//**************************************************************//
+stage ('PayrollCalc') 
+{
+	build job:'taskCalcExecution', wait:true
+	echo 'Cálculo ejecutado correctamente......'
+
+//**************************************************************//
+//    Stage de primera extracción de datos 'NightExtract'
+//**************************************************************//
+	stage('NightExtract'){
+		build job:'NightExtract', wait:true
+		echo 'Extracción realizada.......'
+
+//**************************************************************//
+//    Stage de ejecutar comparación 'exeComparison'
+//**************************************************************//		
+		stage('exeNightComparison'){
+
+			build job:'AnalisisNocturno', wait:true
+			
+			build job: 'Stoplight',propagate:false,wait:true,parameters: 
+			[string(name: 'PATH', value: 'C:\\xmlPnet\\temp'),
+			string(name: 'FILE', value: 'StepDone.0003')];
+						
+//**************************************************************//
+//    Stage de publicación de resultados 'publishResults'
+//**************************************************************//								
+			stage('publishResults'){
+					echo 'publishResults'
+					
+					build job:'PublishResults', wait:true
+					
+			}
+		
+		}
+			
+		
+	}
+
+}
+
+						
+
