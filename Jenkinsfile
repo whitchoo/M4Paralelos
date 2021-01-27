@@ -11,7 +11,6 @@ stage ('1stCalc')
      
 	build job:'taskCalcExecution', wait:true
 	echo 'Cálculo ejecutado correctamente....'
-	echo 'mejoras pendientes: sacar alguna info del resultado de la ejecución '
 	
 	//El siguiente semaforo ya no es necesario porque lo he llevado dentro del taskCalcExecution
 	//build job: 'Stoplight',propagate:false,wait:true,parameters: 
