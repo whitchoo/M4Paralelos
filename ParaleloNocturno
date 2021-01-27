@@ -11,14 +11,16 @@ stage ('PayrollCalc')
 //**************************************************************//
 //    Stage de primera extracción de datos 'NightExtract'
 //**************************************************************//
-	stage('NightExtract'){
+	stage('NightExtract')
+	{
 		build job:'NightExtract', wait:true
 		echo 'Extracción realizada.......'
 
 //**************************************************************//
 //    Stage de ejecutar comparación 'exeComparison'
 //**************************************************************//		
-		stage('exeNightComparison'){
+		stage('exeNightComparison')
+		{
 
 			build job:'AnalisisNocturno', wait:true
 			
@@ -29,9 +31,9 @@ stage ('PayrollCalc')
 //**************************************************************//
 //    Stage de publicación de resultados 'publishResults'
 //**************************************************************//								
-			stage('publishResults'){
+			stage('publishResults')
+			{
 					echo 'publishResults'
-					
 					build job:'PublishResults', wait:true
 					
 			}
