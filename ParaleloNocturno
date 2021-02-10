@@ -22,7 +22,7 @@ stage ('PayrollCalc')
 		stage('exeNightComparison')
 		{
 
-			build job:'AnalisisNocturno', wait:true
+			build job:'NightAnalysis', wait:true
 			echo 'Extracción realizada.......'
 
 		
