@@ -13,7 +13,7 @@ stage ('PayrollCalc')
 //**************************************************************//
 	stage('NightExtract')
 	{
-		build job:'NightExtract', wait:true
+		build job:'NightExtract', wait:true 
 		echo 'Extracción realizada.......'
 
 //**************************************************************//
